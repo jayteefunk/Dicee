@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     var randomDiceIndex1 : Int = 0
     var randomDiceIndex2 : Int = 0
     
@@ -31,19 +30,22 @@ class ViewController: UIViewController {
     }
 
     @IBAction func roleButtonPressed(_ sender: UIButton) {
-        
         updateDiceImages()
         
     }
     
     func updateDiceImages() {
-        
         randomDiceIndex1 = Int(arc4random_uniform(6))
         randomDiceIndex2 = Int(arc4random_uniform(6))
         
         diceImageView1.image = UIImage(named: diceArray[randomDiceIndex1])
         diceImageView2.image = UIImage(named: diceArray[randomDiceIndex2])
     
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        updateDiceImages()
+        
     }
     
 }
